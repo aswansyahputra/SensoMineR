@@ -1,3 +1,34 @@
+#' Plot panelists' tableclothe
+#' 
+#' Plot panelists' tableclothe.
+#' 
+#' The data used here refer to a specific experiment, where panelists are asked
+#' to position products on a tableclothe of dimension \code{lim}, by default
+#' (60,40).
+#' 
+#' @param donnee a data frame of dimension (\emph{p,2j}), where \emph{p}
+#' represents the number of products and \emph{j} the number of panelists
+#' @param numr the number of tableclothe per row (by default 2)
+#' @param numc the number of tableclothe per column (by default 2)
+#' @param color the color used to display the products
+#' @param lim the size of the tableclothe
+#' @return Returns as many graphs as there are panelists, each graph represents
+#' products positioned by a given panelist on a tablecloth
+#' @author Francois Husson
+#' @seealso \code{\link{napping}}, \code{\link{pmfa}}, \code{\link{indscal}}
+#' @references Pages J. (2005). Collection and analysis of perceived product
+#' inter-distances using multiple factor analysis; application to the study of
+#' ten white wines from the Loire Valley. \emph{Food Quality and Preference}.
+#' 16 (7) pp. 642-649.
+#' @keywords multivariate
+#' @examples
+#' 
+#' \dontrun{
+#' data(napping)
+#' nappeplot(napping.don)
+#' }
+#' 
+#' @export nappeplot
 nappeplot <- function (donnee, numr = 2, numc = 2, color = "blue", lim = c(60, 40)) {
   nbjuge <- ncol(donnee)/2
   mult <- nbjuge%/%(numr * numc)

@@ -1,3 +1,28 @@
+#' Make a correspondence analysis on the JAR data
+#' 
+#' Plot the CA graph.
+#' 
+#' 
+#' @param x data.frame
+#' @param col.p the position of the \emph{product} variable
+#' @param col.j the position of the \emph{panelist} variable
+#' @param col.pref the position of the \emph{preference} variable
+#' @param jarlevel a string corresponding to the jar level (the level must be
+#' the same for all the jar variables)
+#' @return Draw a CA graph with the preference data as supplementary
+#' qualitative variables, the products as rows, and the categories of the jar
+#' variables as columns
+#' @author Francois Husson
+#' @keywords dplot
+#' @examples
+#' 
+#' \dontrun{
+#' data(JAR)
+#' res <- CA_JAR(x = JAR, col.p = 13, col.j = 1, col.pref = 2, jarlevel = "jar")
+#' plot.CA(res$res.CA, invisible = "row", cex = 0.8)
+#'  }
+#' 
+#' @export CA_JAR
 CA_JAR <- function(x, col.p, col.j, col.pref, jarlevel="jar"){
 
   ind.jar <- (1:ncol(x))[-c(col.p,col.j,col.pref)]

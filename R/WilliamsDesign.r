@@ -1,3 +1,18 @@
+#' Construct a Williams design
+#' 
+#' Construct a Williams design
+#' 
+#' 
+#' @param nbprod nombre de produits
+#' @param seed a number to intialize the generator of the random number
+#' @return Retrun the design\cr
+#' @author Francois Husson \email{husson@@agrocampus-rennes.fr}
+#' @keywords models
+#' @examples
+#' 
+#'  exemple1 <- WilliamsDesign(12)
+#' 
+#' @export WilliamsDesign
 WilliamsDesign = function (nbprod,seed=NULL) {
   if (is.null(seed)) seed=sample(1:10000,1)
   if (nbprod == 2) plan <- matrix(c(1, 2, 2, 1), 2, 2)

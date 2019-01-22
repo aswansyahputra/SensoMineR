@@ -1,3 +1,45 @@
+#' Graphical display of the interaction between two qualitative variables
+#' 
+#' This function is designed to display the interaction between two qualitative
+#' variables, in most cases the \emph{product} and the \emph{session}
+#' variables.
+#' 
+#' The data set must be balanced (or not unbalanced too much).
+#' 
+#' @param donnee a data frame made up of at least two qualitative variables
+#' (\emph{product}, \emph{panelist}) and a set of quantitative variables
+#' (sensory descriptors)
+#' @param col.p the position of one categorical variables of interest (the
+#' \emph{product} variable)
+#' @param col.j the position of one categorical variables of interest (the
+#' \emph{session} variable)
+#' @param firstvar the position of the first endogenous variable
+#' @param lastvar the position of the last endogenous variable (by default the
+#' last column of \code{donnee})
+#' @param numr the number of graphs per row (by default 2)
+#' @param numc the number of graphs per column (by default 2)
+#' @return If the variables of interest are the \emph{product} and the
+#' \emph{session} variables, a list containing the following components:
+#' \item{prod}{a data frame of dimension (\emph{p,q}), the means over the
+#' panelists and the sessions for the \emph{p} products and the \emph{q}
+#' sensory descriptors} \item{seance}{as many matrices of dimension
+#' (\emph{p,q}) as there are sessions, the means over the panelists for the
+#' \emph{p} products, the \emph{q} sensory descriptors and for each session}
+#' The graphical display of the interaction for each sensory descriptor.
+#' @author F Husson, S Le
+#' @seealso \code{\link{aov}}
+#' @references P. Lea, T. Naes, M. Rodbotten. \emph{Analysis of variance for
+#' sensory data}. \cr H. Sahai, M. I. Ageel. \emph{The analysis of variance}.
+#' @keywords models
+#' @examples
+#' 
+#' \dontrun{
+#' data(chocolates)
+#' graphinter(sensochoc, col.p = 4, col.j = 2, firstvar = 5, lastvar = 12,
+#'     numr = 1, numc = 1)
+#' }
+#' 
+#' @export graphinter
 graphinter <- function(donnee, col.p, col.j, firstvar, lastvar=ncol(donnee), numr=2,numc=2) {
 
      for (j in 1:(firstvar-1)) donnee[,j] <- as.factor(donnee[,j])

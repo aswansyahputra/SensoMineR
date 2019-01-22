@@ -1,3 +1,39 @@
+#' Construct a design for triangle tests
+#' 
+#' Construct a design to make triangle tests.
+#' 
+#' Triangle test: panelists receive three coded samples. They are told that two
+#' of the sample are the same and one is different. Panelists are asked to
+#' identify the odd sample.
+#' 
+#' @param nbprod number of products to compare
+#' @param nbpanelist number of panelists who make the triangle test
+#' @param bypanelist number of expermient that each panelist can done (by
+#' default each panelist make all the comparisons between the products
+#' @param labprod name of the products (by default, the product are coded from
+#' 1 to the number of products
+#' @param labpanelist name of the panelists (by default, the panelists are
+#' coded from 1 to the number of panelists
+#' @return Returns an data.frame of dimension (\emph{t,3}), where \emph{t} is
+#' the number of experiments. In column 1, 2 and 3 the product to test are
+#' given. The product in column 1 is by coded "X", in column 2 is coded by "Y"
+#' and in column 3 is coded by "Z". Panelist should start by product "X", then
+#' "Y" and then by "Z".
+#' @author Francois Husson
+#' @seealso \code{\link{triangle.test}}, \code{\link{triangle.pair.test}}
+#' @keywords models
+#' @examples
+#' 
+#' ##Example 1
+#' design1 = triangle.design (nbprod = 4, nbpanelist = 8)
+#' 
+#' ##Example 2
+#' design2 = triangle.design(nbprod = 4, nbpanelist = 6, bypanelist = 3,
+#'   labprod=c("prod1","prod2","prod3","prod4"),
+#'   labpanelist=c("John","Audrey","Peter","Martina","James","Lisa"))
+#'   
+#' 
+#' @export triangle.design
 triangle.design <- function(nbprod, nbpanelist, bypanelist = nbprod * (nbprod -
                               1) / 2, labprod = 1:nbprod, labpanelist = 1:nbpanelist) {
   aux <- as.data.frame(matrix(0, nbprod * (nbprod - 1) / 2, 2))

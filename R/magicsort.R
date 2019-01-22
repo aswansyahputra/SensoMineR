@@ -1,3 +1,40 @@
+#' Returns a sorted data matrix
+#' 
+#' Sort the rows and columns of a matrix in a "magic" order or by ascending (or
+#' descending) mean or median or geometrical mean.
+#' 
+#' Very useful function to compare results.
+#' 
+#' @param matrice a data matrix to sort
+#' @param sort.mat sort the rows and columns according to the result of the PCA
+#' made on this matrix (by default the \code{matrice})
+#' @param method four types of calculations, magic (\code{"magic"}),
+#' (\code{"median"}), arithmetical (\code{"mean"}) or geometrical
+#' (\code{"geo"}) mean (by default magic)
+#' @param byrow boolean, if TRUE then data are sorted over the rows
+#' @param bycol boolean, if TRUE then data are sorted over the columns
+#' @param ascending boolean, if TRUE then data are sorted in ascending order
+#' @author F Husson, S Le
+#' @keywords manip
+#' @examples
+#' 
+#' ## Example 1
+#' data(chocolates)
+#' resdecat<-decat(sensochoc, formul = "~Product", firstvar = 5, 
+#'     graph = FALSE)
+#' coltable(magicsort(resdecat$tabT), level.lower = -1.96, 
+#'     level.upper = 1.96, main.title = "Products' description")
+#' 
+#' ## Example 2
+#' data(chocolates)
+#' resperf<-paneliperf(sensochoc, 
+#'     formul = "~Product+Panelist+Product:Panelist",
+#'     formul.j = "~Product", col.j = 1, firstvar = 5, lastvar = 12,
+#'     synthesis = FALSE, graph = FALSE)
+#' res.sort=magicsort(resperf$prob.ind, method = "median")
+#' coltable(res.sort, main.title = "P-values of the F-test by panelist")
+#' 
+#' @export magicsort
 "magicsort" <- function(matrice,sort.mat=matrice,method="magic",byrow=TRUE,bycol=TRUE,ascending=TRUE){
 
   if ((method!="magic")&(method!="mean")&(method!="geo")&(method!="median")) stop("The method is unknown")

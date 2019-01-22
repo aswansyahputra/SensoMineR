@@ -1,3 +1,26 @@
+#' Construction of an optimal design
+#' 
+#' Construction of an optimal design balanced for first order of carry-over
+#' effect.
+#' 
+#' 
+#' @param nbPanelist Maximum number of panelists
+#' @param nbProd Number of products
+#' @param nbProdByPanelist Number of products that each panelist will evaluate
+#' @param seed initialization of the algorithm
+#' @return List with \item{design }{design with the products evaluated by each
+#' panelist} \item{rank }{contingency table with the number of times each
+#' product is seen at each rank} \item{succ }{contingency table with the number
+#' of times each product follow each product}
+#' @author F. Husson
+#' @keywords math
+#' @examples
+#' 
+#' \dontrun{
+#' optimaldesign(nbPanelist=10,nbProd=5,nbProdByPanelist=3)
+#' }
+#' 
+#' @export optimaldesign
 optimaldesign <- function(nbPanelist,nbProd,nbProdByPanelist=nbProd, seed=NULL){
 
   if (is.null(seed)) seed <- sample(1:1000,1)

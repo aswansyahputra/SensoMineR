@@ -1,3 +1,27 @@
+#' Print Factorial Approach for Sorting Task data (FAST) results
+#' 
+#' Print Factorial Approach for Sorting Task data (FAST) results.
+#' 
+#' 
+#' @param x an object of class fast
+#' @param file A connection, or a character string naming the file to print to.
+#' If NULL (the default), the results are not printed in a file
+#' @param sep character string to insert between the objects to print (if the
+#' argument file is not NULL
+#' @param \dots further arguments passed to or from other methods
+#' @author Marine Cadoret, S\'ebastien L\^e
+#' \email{sebastien.le@@agrocampus-ouest.fr}
+#' @seealso \code{\link{fast}}
+#' @keywords print
+#' @examples
+#' 
+#' \dontrun{
+#' data(perfume)
+#' res.fast <- fast(perfume,graph=FALSE)
+#' print.fast(res.fast, file="c:/essai.csv", sep = ";")
+#' }
+#' 
+#' @export print.fast
 print.fast=function (x, file = NULL, sep = ";", ...)
 {
     res.catego <- x

@@ -1,3 +1,34 @@
+#' Plot for the Ideal Mapping
+#' 
+#' Option to replot by zooming on the ideal map.
+#' 
+#' Replot the Ideal Map by zooming on the area of interest
+#' 
+#' @param x An object of class \emph{IdMap}
+#' @param xlim The lower and upper limits of interest on the X-axis
+#' @param ylim The lower and upper limits of interest on the Y-axis
+#' @param levels.contour The levels (between 0 and 1) to consider for the
+#' colors on the surface plot.  By default, they are set automatically based on
+#' the results
+#' @param color Boolean, define whether the map is in color or in black and
+#' white
+#' @param inverse Boolean, define whether the Black/While code should be
+#' inversed in the graph
+#' @param \dots further arguments passed to or from other methods
+#' @return Return the IdMap zoomed on the area of interest.
+#' @author Worch Thierry (thierry@@qistatistics.co.uk)
+#' @seealso \code{\link{IdMap}}
+#' @keywords dplot
+#' @examples
+#' 
+#' \dontrun{
+#' data(perfume_ideal)
+#' res <- IdMap(perfume_ideal, col.p=2, col.j=1, col.lik=ncol(perfume_ideal), id.recogn="id_")
+#' plot.IdMap(res, xlim=c(-7,10), ylim=c(-5,7), levels.contour=NULL, color=TRUE)
+#' plot.IdMap(res, xlim=c(-7,10), ylim=c(-5,7), levels.contour=NULL, color=FALSE, inverse=TRUE)
+#' }
+#' 
+#' @export plot.IdMap
 plot.IdMap <- function(x,xlim,ylim,levels.contour=NULL,color=FALSE,inverse=FALSE, ...){
     res <- x
     if (!inherits(res,"IdMap"))

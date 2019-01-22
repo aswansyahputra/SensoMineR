@@ -1,3 +1,31 @@
+#' Make penalty graph
+#' 
+#' Plot the graphs for the penalty analysis.
+#' 
+#' 
+#' @param x an object of class fast
+#' @param name.prod a string corresonding to the name of the product for which
+#' penalty is drawn
+#' @param model an integer: 1 means that the one-dimensional penalties are
+#' drawn, 2 means that the multidimensional penalties are drawn
+#' @param confidence A boolean: if true, the confidence interval is drawn for
+#' each penalty
+#' @param level threshold for the selection of the categories that are plotted
+#' @param \dots further arguments passed to or from other methods, such as cex,
+#' cex.main, ...
+#' @return Draw a plot of the penalty against the ferquency of the categories.
+#' @author Francois Husson
+#' @seealso \code{\link{JAR}}
+#' @keywords dplot
+#' @examples
+#' 
+#' \dontrun{
+#' data(JAR)
+#' res.jar <- JAR(JAR,col.p=13,col.j=1,col.pref=2)
+#' plot.JAR(res.jar,name.prod="284", model=1)
+#'  }
+#' 
+#' @export plot.JAR
 plot.JAR <- function(x, name.prod, model=1, confidence=TRUE, level=0.05,...){
   if (!inherits(x, "JAR"))  stop("x must be an object of class JAR")
   if (model==1 || model=="one") penal <- x$penalty1

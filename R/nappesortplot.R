@@ -1,4 +1,39 @@
 #representation graphique des nappes categorisees : fonction nappecatplot
+
+
+#' Plot consumers' sorted tablecloth
+#' 
+#' Plot consumers' sorted tablecloth.
+#' 
+#' The data used here refer to a specific experiment, where consumers are asked
+#' to position products on a tablecloth of dimension \code{lim}, by default
+#' (60,40) and to categorize them.
+#' 
+#' @param donnee a data frame of dimension (\emph{p,3j}), where \emph{p}
+#' represents the number of products and \emph{j} the number of consumers
+#' @param first 2 possibilities: "nappe" if the napping variables first appear
+#' for each consumer or "catego" if it is the categorization variable
+#' @param numr the number of tablecloth per row (by default 2)
+#' @param numc the number of tablecloth per column (by default 2)
+#' @param lim the size of the tablecloth
+#' @return Returns as many graphs as there are consumers, each graph represents
+#' products positioned by a given consumer on a tablecloth and colored
+#' according to the categorization
+#' @author Marine Cadoret, S\'ebastien L\^e
+#' \email{sebastien.le@@agrocampus-ouest.fr}
+#' @seealso \code{\link{fasnt}}
+#' @references Pag\`es, J., L\^e, S., Cadoret, M. (2010) \emph{The Sorted
+#' Napping: a new holistic approach in sensory evaluation}. Journal of Sensory
+#' Studies\cr
+#' @keywords multivariate
+#' @examples
+#' 
+#' \dontrun{
+#' data(smoothies)
+#' nappesortplot(smoothies,first="nappe")
+#' }
+#' 
+#' @export nappesortplot
 nappesortplot=function (donnee,first="nappe", numr = 2, numc = 2, lim = c(60, 40)) {
     nbjuge <- ncol(donnee)/3
 #Si pour chaque sujet d'abord la categorisation  puis la nappe

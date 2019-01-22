@@ -1,3 +1,27 @@
+#' Simulate virtual panels
+#' 
+#' Simulate virtual panels
+#' 
+#' Called by the simulation procedure
+#' 
+#' @param axeAFM matrix
+#' @param nbchoix Number of panelists in a virtual Panel
+#' @param nbgroup Number of groups (by default 1 for a PCA)
+#' @param nbsimul number of simulations
+#' @author Francois Husson
+#' @references Husson, F., Le Dien, S. & Pages, J.  (2005). Confidence ellipse
+#' for the sensory profiles obtained by Principal Components Analysis. Food
+#' Quality and Preference.  16 (3). pp. 245-250.
+#' @keywords models internal
+#' @examples
+#' 
+#' data(chocolates)
+#' donnee <- cbind.data.frame(sensochoc[,c(1,4,5:18)])
+#' axe <- construct.axes(donnee, scale.unit = TRUE)
+#' simul <- simulation(axe)
+#' plotellipse (simul, alpha = 0.05, eig = signif(axe$eig,4))
+#' 
+#' @export simulation
 "simulation" <- function(axeAFM,nbchoix=NULL,nbgroup=1,nbsimul=500){
 
 ##################################################################################

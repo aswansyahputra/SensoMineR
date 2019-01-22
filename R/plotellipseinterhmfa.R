@@ -1,3 +1,23 @@
+#' Plotellipseinterhmfa
+#' 
+#' Construit l'ensemble des ellipses de confiance
+#' 
+#' 
+#' @param mat Matrix with all the points
+#' @param coord a length 2 vector specifying the components to plot
+#' @param alpha Confidence level of the ellipses
+#' @param nbgroup Confidence level of the ellipses
+#' @param eig a matrix with the component of the factor analysis (in row) and
+#' the eigenvalues, the inertia and the cumulative inertia for each component.
+#' Typically, the \code{eig} output of the \code{construct.axes} function
+#' @param cex cf. function \code{\link{par}} in the \pkg{graphics} package
+#' @param color a vector with the colors used; by default there are 35 colors
+#' defined
+#' @param hmfa a list with the hierarchy and the partial coordinates of the
+#' HMFA
+#' @author Francois Husson
+#' @keywords internal
+#' @export plotellipseinterhmfa
 "plotellipseinterhmfa" <- function(mat,alpha=0.05,coord=c(1,2),nbgroup=1,eig,cex=1,color=NULL,hmfa){
 
 #################################################################

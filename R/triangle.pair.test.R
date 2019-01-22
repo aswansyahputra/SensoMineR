@@ -1,3 +1,28 @@
+#' Make a Triangle test for two products
+#' 
+#' Make a Triangle test for two products.
+#' 
+#' Triangle test: panelists receive three coded samples. They are told that two
+#' of the sample are the same and one is different.  Panelists are asked to
+#' identify the odd sample.
+#' 
+#' @param nb.good number of panelists who identify the odd sample
+#' @param nb.answer number of panelists who make the triangle test
+#' @return Returns \item{p.value}{the p-value of the Triangle test;}
+#' \item{Estimation}{estimation by Maximum Likelihood of the number of
+#' panelists who really perceive the difference between the products;}
+#' \item{ML}{Maximum Likelihood of the estimation of the number of panelists
+#' who really perceive the difference between the products;}
+#' \item{minimum}{minimum of panelists who should detect the odd product to can
+#' say that panelists perceive the difference between the products.}
+#' @author Francois Husson
+#' @seealso \code{\link{triangle.test}}, \code{\link{triangle.design}}
+#' @keywords models
+#' @examples
+#' 
+#' triangle.pair.test (11, 20)  
+#' 
+#' @export triangle.pair.test
 triangle.pair.test <- function(nb.good,nb.answer){
   if (nb.good > nb.answer) stop("nb.good should be less than nb.answer")
   p.value = pbinom(nb.good-1,nb.answer,1/3,lower.tail=FALSE)

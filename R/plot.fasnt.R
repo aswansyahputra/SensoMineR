@@ -1,3 +1,56 @@
+#' Make Factorial Approach for Sorting Napping Task data (FASNT) graphs
+#' 
+#' Plot the graphs for Factorial Approach for Sorting Napping Task data
+#' (FASNT).
+#' 
+#' 
+#' @param x an object of class fast
+#' @param axes a length 2 vector specifying the components to plot
+#' @param choix the graph to plot ("ind" for the products and the categories,
+#' "group" for the consumers and "partial" for the partial products)
+#' @param xlim range for the plotted 'x' values, defaulting to the range of the
+#' finite values of 'x'
+#' @param ylim range for the plotted 'y' values, defaulting to the range of the
+#' finite values of 'y'
+#' @param habillage give no color for the individuals ("none"), or color the
+#' products among a consumer (give the number of the consumer)
+#' @param col.ind a color for the products
+#' @param col.var a color for the categories
+#' @param lab.ind boolean, if TRUE, the products are labelled
+#' @param lab.var boolean, if TRUE, the categories associated with
+#' categorization are labelled
+#' @param lab.coord boolean, if TRUE, the napping variables are labelled
+#' @param lab.partial boolean, if TRUE, the partial products are labelled
+#' @param invisible string indicating if some points should not be drawn ("ind"
+#' or "var")
+#' @param cex cf. function \code{\link{par}} in the \pkg{graphics} package
+#' @param lab.grpe boolean, if TRUE, the consumers are labelled
+#' @param title string corresponding to the title of the graph you draw (by
+#' default NULL and a title is chosen)
+#' @param palette the color palette used to draw the points. By default colors
+#' are chosen. If you want to define the colors :
+#' palette=palette(c("black","red","blue")); or you can use:
+#' palette=palette(rainbow(30)), or in black and white for example:
+#' palette=palette(gray(seq(0,.9,len=25)))
+#' @param new.plot boolean, if TRUE, a new graphical device is created
+#' @param \dots further arguments passed to or from other methods
+#' @return Returns the products factor map, the categories factor map, the
+#' coordinates factor map and the consumers factor map.
+#' @author Marine Cadoret, S\'ebastien L\^e
+#' \email{sebastien.le@@agrocampus-ouest.fr}
+#' @seealso \code{\link{fasnt}}
+#' @keywords dplot
+#' @examples
+#' 
+#' \dontrun{
+#' data(smoothies)
+#' res.fasnt <- fasnt(smoothies, first="nappe",graph=FALSE)
+#' plot.fasnt(res.fasnt,choix="ind",invisible="var",habillage=15,
+#'   title="Objects colored according to the groups provided by consumer 5")
+#' plot.fasnt(res.fasnt,choix="partial",lab.partial=FALSE)
+#' }
+#' 
+#' @export plot.fasnt
 plot.fasnt=function (x,choix="ind", axes = c(1, 2), xlim = NULL, ylim = NULL, invisible = NULL,
     col.ind = "blue", col.var = "red", lab.ind=TRUE,lab.var=TRUE, lab.coord=TRUE, lab.partial=TRUE,
     cex = 1, lab.grpe = TRUE, title = NULL, habillage = "none", palette = NULL,

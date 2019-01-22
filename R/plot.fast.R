@@ -1,3 +1,54 @@
+#' Make Factorial Approach for Sorting Task data (FAST) graphs
+#' 
+#' Plot the graphs for Factorial Approach for Sorting Task data (FAST).
+#' 
+#' 
+#' @param x an object of class fast
+#' @param axes a length 2 vector specifying the components to plot
+#' @param choix the graph to plot ("ind" for the products, "var" for the
+#' vcategories, "group" for the consumers)
+#' @param xlim range for the plotted 'x' values, defaulting to the range of the
+#' finite values of 'x'
+#' @param ylim range for the plotted 'y' values, defaulting to the range of the
+#' finite values of 'y'
+#' @param habillage give no color for the individuals ("none"), or color the
+#' products among a consumer (give the number of the consumer)
+#' @param col.ind a color for the products
+#' @param col.var a color for the categories
+#' @param col.quali.sup a color for the supplementary categories
+#' @param col.ind.sup a color for the supplementary individuals
+#' @param col.quanti.sup a color for the quantitative supplementary variables
+#' @param label a list of character for the elements which are labelled (by
+#' default, all the elements are labelled ("ind", "var"))
+#' @param invisible string indicating if some points should not be drawn ("ind"
+#' or "var")
+#' @param cex cf. function \code{\link{par}} in the \pkg{graphics} package
+#' @param lab.grpe boolean, if TRUE, the consumers are labelled
+#' @param title string corresponding to the title of the graph you draw (by
+#' default NULL and a title is chosen)
+#' @param palette the color palette used to draw the points. By default colors
+#' are chosen. If you want to define the colors :
+#' palette=palette(c("black","red","blue")); or you can use:
+#' palette=palette(rainbow(30)), or in black and white for example:
+#' palette=palette(gray(seq(0,.9,len=25)))
+#' @param new.plot boolean, if TRUE, a new graphical device is created
+#' @param \dots further arguments passed to or from other methods
+#' @return Returns the products factor map, the categories factor map and the
+#' consumers factor map.
+#' @author Marine Cadoret, S\'ebastien L\^e
+#' \email{sebastien.le@@agrocampus-ouest.fr}
+#' @seealso \code{\link{fast}}
+#' @keywords dplot
+#' @examples
+#' 
+#' \dontrun{
+#' data(perfume)
+#' res.fast <- fast(perfume,graph=FALSE)
+#' plot.fast(res.fast,choix="ind",invisible="var",habillage=5)
+#' plot.fast(res.fast,choix="group")
+#' }
+#' 
+#' @export plot.fast
 plot.fast <- function (x, choix = "ind", axes = c(1, 2), xlim = NULL, ylim = NULL,
     invisible = NULL, col.ind = "blue", col.var = "red", col.quali.sup = "darkred",
     col.ind.sup = "darkblue", col.quanti.sup = "black", label = "all",

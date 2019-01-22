@@ -1,3 +1,69 @@
+#' Color the cells of a data frame according to 4 threshold levels
+#' 
+#' 
+#' Return a colored display of a data frame according to 4 threshold levels.
+#' 
+#' This function is very useful especially when there are a lot of values to
+#' check.
+#' 
+#' @param matrice a data frame (or a matrix) with only quantitative variables
+#' @param col.mat a data frame (or a matrix) from which the cells of the
+#' \code{matrice} data frame are colored; by default,
+#' \code{col.mat}=\code{matrice}
+#' @param nbrow the number of rows to be displayed (by default,
+#' \code{nrow(matrice)})
+#' @param nbcol the number of columns to be displayed (by default,
+#' \code{ncol(matrice)})
+#' @param level.lower the threshold below which cells are colored in
+#' \code{col.lower}
+#' @param col.lower the color used for \code{level.lower}
+#' @param level.upper the threshold above which cells are colored in
+#' \code{col.upper}
+#' @param col.upper the color used for \code{level.upper}
+#' @param cex cf. function \code{\link{par}} in the \pkg{graphics} package
+#' @param nbdec the number of decimal places displayed
+#' @param main.title title of the graph(s)
+#' @param level.lower2 the threshold below which cells are colored in
+#' \code{col.lower2}; this level should be less than level.lower
+#' @param col.lower2 the color used for \code{level.lower2}
+#' @param level.upper2 the threshold above which cells are colored in
+#' \code{col.upper2}; this level should be greater than level.upper
+#' @param col.upper2 the color used for \code{level.upper2}
+#' @param novalue boolean, if TRUE the values are not written
+#' @author F Husson, S Le
+#' @keywords color
+#' @examples
+#' 
+#' ## Example 1
+#' data(chocolates)
+#' resdecat<-decat(sensochoc, formul = "~Product+Panelist", firstvar = 5,
+#'     graph = FALSE)
+#' resaverage<-averagetable(sensochoc, formul = "~Product+Panelist", 
+#'     firstvar = 5)
+#' resaverage.sort = resaverage[rownames(magicsort(resdecat$tabT)),
+#'     colnames(magicsort(resdecat$tabT))]
+#' coltable(resaverage.sort, magicsort(resdecat$tabT), 
+#'     level.lower = -1.96, level.upper = 1.96,
+#'     main.title = "Average by chocolate")
+#' 
+#' ## Example 3
+#' \dontrun{
+#' data(chocolates)
+#' resperf<-paneliperf(sensochoc, 
+#'     formul = "~Product+Panelist+Product:Panelist", 
+#'     formul.j = "~Product", col.j = 1, firstvar = 5, lastvar = 12, 
+#'     synthesis = FALSE, graph = FALSE)
+#' resperfprob<-magicsort(resperf$prob.ind, method = "median")
+#' coltable(resperfprob, level.lower = 0.05, level.upper = 1, 
+#'     main.title = "P-value of the F-test (by panelist)")
+#' 
+#' resperfr2<-magicsort(resperf$r2.ind, method = "median", 
+#'     ascending = FALSE)
+#' coltable(resperfr2, level.lower = 0.00, level.upper = 0.85, 
+#'     main.title = "Adjusted R-square (by panelist)")
+#' }
+#' 
+#' @export coltable
 coltable <-function(matrice,col.mat=matrice,nbrow=nrow(matrice),nbcol=ncol(matrice),level.lower=0.05,col.lower="mistyrose",level.upper=1.96,col.upper="lightblue",cex=0,nbdec=4,main.title=NULL,level.lower2=-1e10,col.lower2="red",level.upper2=1e10,col.upper2="blue",novalue=FALSE) {
 
 ################################################################
